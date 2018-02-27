@@ -2,6 +2,7 @@
   <div id="app">
     <img width="25%" src="./assets/logo.png">
     <div v-html="test"></div>
+    <div v-html="textContent(test)"></div>
   </div>
 </template>
 
@@ -20,6 +21,13 @@ export default {
       testData: [{ name: "test" }],
       test: xss
     };
+  },
+  methods: {
+    textContent(html) {
+      const txt = document.createElement("div");
+      txt.innerHTML = html;
+      return txt.textContent;
+    }
   }
 };
 </script>
